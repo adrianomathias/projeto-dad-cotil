@@ -1,22 +1,40 @@
-# Projeto final - DAD
-Este repositório contém o projeto final desenvolvido para a disciplina de **DAD (Desenvolvimento de Aplicações Desktop)** do **Colégio Técnico de Limeira (COTIL / Unicamp)**, lecionada pelo professor **William Roberto de Paiva**.
+# Biblioteca Comunitária — Projeto Final de DAD
 
-O projeto consiste em uma aplicação desktop moderna que integra tecnologias web robustas com recursos de inteligência artificial.
+Base técnica do projeto. Esta etapa **não** contém telas de negócio, CRUD, regras, migrations, autenticação, notificações nem integrações. O modelo de dados e as regras estão descritos em `CONTEXTO.md`; o DER será documentado na Etapa 2 em `docs/modelo-relacional.md`.
 
-## 🛠️ Tecnologias Utilizadas
+Repositório: https://github.com/adrianomathias/projeto-dad-cotil
 
-- **TypeScript** — Lógica da aplicação com tipagem estática e segurança de código.
-- **HTML5 & CSS3** — Estruturação e estilização customizada da interface.
-- **Bootstrap** — Framework de estilização para um design responsivo e componentes modernos.
-- **Inteligência Artificial (IA)** — Integração de recursos inteligentes no ecossistema do app.
-- **Ambiente Desktop** — Executado como aplicação desktop.
+## Arquitetura
 
-## 👥 Grupo / Autores
+- `app/`: aplicativo desktop Electron + React + TypeScript (janela segura com `contextIsolation`, `sandbox` e sem `nodeIntegration`).
+- `server/`: servidor central Express + TypeScript.
+- `shared/`: pacote TypeScript de tipos compartilhados; começa vazio e será preenchido na Etapa 3.
+- `tsconfig.base.json`: configuração TypeScript estrita usada pelos três pacotes.
 
-- Adriano Mathias Amâncio
-- Cauã Maciera
-- Júlio Cesar de Souza Melo
-- Rafael Bernardo Pereira
+O aplicativo conversa com o servidor pela API. O aplicativo não acessa o banco diretamente. O banco previsto é SQLite com `better-sqlite3`, sem tabelas ou migrations nesta base.
 
----
-Desenvolvido como critério de avaliação na disciplina de DAD.
+## Preparação
+
+Requisito: Node.js 20 ou superior.
+
+```bash
+npm install
+cp .env.example .env
+```
+
+Ajuste `.env` localmente. Nunca versionar `.env`, credenciais, CPF real ou dados pessoais reais.
+
+## Comandos
+
+```bash
+npm run dev          # inicia servidor e aplicativo juntos
+npm run dev:server   # somente servidor
+npm run dev:app      # somente aplicativo Electron
+npm run typecheck    # conferência TypeScript dos pacotes
+npm run build        # compila shared, server e app
+npm start            # inicia o servidor compilado (após build)
+```
+
+## Git
+
+Branches: `main` (base), `funcao-1`, `funcao-2`, `funcao-3`, `funcao-4` e `integracao`. Etapas normais nunca são enviadas diretamente para `main`. Cada integrante usa sua própria identidade Git e commita somente os arquivos da sua etapa. Regras completas em `CONTEXTO.md`.

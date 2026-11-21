@@ -1,0 +1,26 @@
+{
+  "name": "@biblioteca/app",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "build": "npm run typecheck && electron-vite build",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "preview": "electron-vite preview"
+  },
+  "dependencies": {
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.16.22",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "electron": "^45.4.1",
+    "electron-vite": "^5.0.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.0.0"
+  }
+}
