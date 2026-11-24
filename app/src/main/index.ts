@@ -8,7 +8,7 @@ function createWindow(): void {
   const window = new BrowserWindow({
     width: 1200,
     height: 800,
-    title: 'Biblioteca Comunitaria',
+    title: 'Biblioteca Comunitária',
     webPreferences: {
       preload: join(__dirname, '../preload/index.cjs'),
       contextIsolation: true,

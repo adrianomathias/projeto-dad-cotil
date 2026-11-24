@@ -21,6 +21,12 @@
     "typescript": "^5.9.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true,
+    "@swc/core@1.16.22": true,
+    "electron@45.4.1": true
   }
 }
