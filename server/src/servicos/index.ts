@@ -33,7 +33,9 @@ export function criarContexto(): ContextoServicos {
   })
 
   const repos = new FabricanteRepositorios(conexao.db)
-  const notificador = new Notificador({
+ const notificador = new Notificador({
+    apiKey: config.emailApiKey,
+    remetente: config.emailRemetente,
     host: config.smtpHost,
     port: config.smtpPorta,
     user: config.smtpUsuario,
