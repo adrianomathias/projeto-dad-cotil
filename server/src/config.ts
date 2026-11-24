@@ -3,6 +3,8 @@ import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
 
 export interface Configuracao {
+  emailApiKey?: string
+  emailRemetente?: string
   porta: number
   origemCors?: string
   ambiente: string
@@ -101,12 +103,16 @@ export function lerConfiguracao(
     adminSenha,
     senhaInicialLeitor: senhaInicialLeitor === '' ? undefined : senhaInicialLeitor,
     googleBooksApiKey: textoOpcional(ambiente, 'GOOGLE_BOOKS_API_KEY'),
+    emailApiKey: textoOpcional(ambiente, 'EMAIL_API_KEY'),
+    emailRemetente: textoOpcional(ambiente, 'EMAIL_REMETENTE'),
     smtpHost: textoOpcional(ambiente, 'SMTP_HOST'),
     smtpPorta: inteiroAmbiente(ambiente, 'SMTP_PORT', 587, 1, 65535),
     smtpUsuario: textoOpcional(ambiente, 'SMTP_USER'),
     smtpSenha: textoOpcional(ambiente, 'SMTP_PASSWORD'),
     whatsappToken: textoOpcional(ambiente, 'WHATSAPP_TOKEN'),
-    modoSimuladoEmail: ambiente['MODO_SIMULADO_EMAIL'] === '1' || textoOpcional(ambiente, 'SMTP_HOST') === undefined,
+    modoSimuladoEmail:
+   ambiente['MODO_SIMULADO_EMAIL'] === '1' ||
+   (textoOpcional(ambiente, 'EMAIL_API_KEY') === undefined && textoOpcional(ambiente, 'SMTP_HOST') === undefined),
     // Em produção a checagem externa é obrigatória; a variável só ajuda em testes locais.
     validarCpfExterno: producao || ambiente['VALIDAR_CPF_EXTERNO'] !== '0',
     executarAgendador: ambiente['EXECUTAR_AGENDADOR'] !== '0'
