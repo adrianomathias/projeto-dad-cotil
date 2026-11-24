@@ -7,17 +7,26 @@
     "dev": "tsx watch src/index.ts",
     "build": "tsc -p tsconfig.json",
     "start": "node dist/index.js",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "test:sqlite": "node --test test/sqlite.check.mjs"
   },
   "dependencies": {
     "better-sqlite3": "^13.2.0",
-    "express": "^5.1.0"
+    "cors": "^2.8.6",
+    "express": "^5.1.0",
+    "nodemailer": "^7.0.7"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.13",
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.0",
+    "@types/nodemailer": "^7.0.2",
     "tsx": "^4.23.15",
     "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }

@@ -34,7 +34,7 @@ Documento de referência do Projeto Final de DAD. Leia as seções necessárias 
 
 ## Regras de negócio
 
-- Papéis: **ADMIN** (gestão de usuários, configurações, perdão/estorno), **ATENDENTE** (balcão: cadastro, empréstimo, devolução, fila, pagamento de multa), **LEITOR** (somente os próprios dados; nunca dados de outro leitor).
+- Papéis: **ADMIN** (gestão completa: cadastro, empréstimo, devolução, fila, multas, usuários e configurações), **LEITOR** (somente os próprios dados; nunca dados de outro leitor).
 - Empréstimo: prazo inicial de **14 dias**, até **3** exemplares por leitor, **1** renovação de **7 dias**, bloqueada se existir fila para o livro.
 - Fila de espera: ordem **FIFO**, sem escolha de data. A pessoa avisada tem **24 horas corridas** para retirar; se o limite cair em fim de semana ou feriado, prorrogar até o próximo dia útil. Limite de **3 reservas ativas** por leitor.
 - Agendamento de exemplar já disponível é operação separada da fila: até **3 dias** à frente, guardado até o fim do dia escolhido; também respeita o limite de 3 reservas ativas.
